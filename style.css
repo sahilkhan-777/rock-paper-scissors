@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --text-color: #f1f1f1;
+    --primary-bg-color: #f4f4f4;
+    --secondary-bg-color: #313131;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    background-color: var(--secondary-bg-color);
+    max-width: 700px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+.container h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.container h1 span{
+    transition: color 0.3s ease;
+}
+.container h1 span:hover{
+    color: var(--secondary-color);
+}
+.container .btn-container{
+    display: flex;
+    gap: 16px;
+    margin-top: 1.5rem;
+}
+.container .btn-container button{
+    /* padding: 0.5rem 1rem; */
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 3rem;
+    font-weight: 550;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease, transform 0.3s ease , filter 0.3s ease;
+}
+.container .btn-container button#rock-btn img, button#scissors-btn img{
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+.container .btn-container button:hover{
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+    filter: drop-shadow(0 1px 4px rgb(48, 224, 24)) ;
+    img{
+        transform: scale(1.1);
+    }
+}
+.container .score-board{
+    display: flex;
+    gap: 16px;
+    margin-top: 1.5rem;
+}
+.container #game{
+    margin-top: 1.5rem;
+    height: 50px;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+.container #result{
+    height: 30px;
+    margin-top: 0.5rem;
+}
