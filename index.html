@@ -4,101 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="index.js" defer></script>
 </head>
 
 <body>
-    <script>
-        function getComputerChoice() {
-            let computerGuessInt = Math.floor(Math.random() * 3);
-
-            let computerGuess;
-            if (computerGuessInt == 0) {
-                computerGuess = "rock";
-            }
-            else if (computerGuessInt == 1) {
-                computerGuess = "paper";
-            }
-            else {
-                computerGuess = "scissors";
-            }
-
-            return computerGuess;
-        }
-
-        function getHumanChoice() {
-            let humanGuess = prompt("Enter your choice: rock, paper, or scissors.");
-            if (humanGuess === null) {
-                alert("You cancelled the game.");
-                return null;
-            }
-
-            humanGuess = humanGuess.toLowerCase().trim();
-            if (humanGuess == "rock" || humanGuess == "paper" || humanGuess == "scissors") {
-                alert(`Your choice: ${capitalizeWord(humanGuess)}`);
-                return humanGuess;
-            }
-            else if (humanGuess == "") {
-                alert("Enter a non-empty string");
-                return getHumanChoice();
-            }
-            else {
-                alert("Enter a valid choice.");
-                return getHumanChoice();
-            }
-        }
-
-        function capitalizeWord(word) {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        }
-
-        function playGame() {
-            let playerScore = 0;
-            let computerScore = 0;
-
-            for (let i = 0; i < 5; i++) {
-                alert(`Round ${i + 1}`);
-                let humanChoice = getHumanChoice();
-                if (humanChoice === null) {
-                    alert("Exiting...");
-                    return;
-                }
-                let computerChoice = getComputerChoice();
-                playRound(humanChoice, computerChoice);
-            }
-
-            function playRound(humanChoice, computerChoice) {
-                if (humanChoice === computerChoice) {
-                    playerScore++;
-                    computerScore++;
-                    alert(`Computer choice: ${capitalizeWord(computerChoice)}`);
-                    alert("It's a tie!");
-                } else if (
-                    (humanChoice === "rock" && computerChoice === "scissors") ||
-                    (humanChoice === "paper" && computerChoice === "rock") ||
-                    (humanChoice === "scissors" && computerChoice === "paper")
-                ) {
-                    playerScore++;
-                    alert(`Computer choice: ${capitalizeWord(computerChoice)}`);
-                    alert(`${capitalizeWord(humanChoice)} beats ${capitalizeWord(computerChoice)}, You win!!`);
-                } else {
-                    computerScore++;
-                    alert(`Computer choice: ${capitalizeWord(computerChoice)}`);
-                    alert(`${capitalizeWord(computerChoice)} beats ${capitalizeWord(humanChoice)}, You lose!!`);
-                }
-                alert("Player Score: " + playerScore + "\nComputer Score: " + computerScore);
-            }
-
-            if (playerScore === computerScore) {
-                alert(`At the end of 5 rounds\nYour score: ${playerScore} | Computer score: ${computerScore}\nIt's a tie!!`);
-            } else if (playerScore > computerScore) {
-                alert(`At the end of 5 rounds\nYour score: ${playerScore} | Computer score: ${computerScore}\nYou Won!!`);
-            } else {
-                alert(`At the end of 5 rounds\nYour score: ${playerScore} | Computer score: ${computerScore}\nYou lost!!`);
-            }
-        }
-
-        playGame();
-    </script>
+    <div class="container">
+        <h1><span>R</span><span>o</span><span>c</span><span>k</span> <span>P</span><span>a</span><span>p</span><span>e</span><span>r</span> <span>S</span><span>c</span><span>i</span><span>s</span><span>s</span><span>o</span><span>r</span><span>s</span></h1>
+        <div class="btn-container">
+            <button id="rock-btn" title="Rock"><i class="fa-solid fa-hand-fist"></i></button>
+            <button id="paper-btn" title="Paper"><i class="fa-regular fa-hand-paper"></i></button>
+            <button id="scissors-btn" title="Scissors"><i class="fa-solid fa-hand-peace"></i></button>
+        </div>
+        <div id="game"></div>
+        <div class="score-board">
+            <h2 id="score">Score: <span id="update-player-score">0</span></h2>
+            <h2 id="computer-score">Computer Score: <span id="update-computer-score">0</span></h2>
+        </div>
+        <h2 id="result"></h2>
+    </div>
 </body>
-
 </html>
